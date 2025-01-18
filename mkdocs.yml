@@ -1,0 +1,52 @@
+site_name: notebook-gena
+repo_url: https://github.com/rajeshpv/notebook-gena
+site_url: https://rajeshpv.github.io/notebook-gena
+site_description: This is a template repository for Python projects that use uv for their dependency management.
+site_author: Rajesh Rao
+edit_uri: edit/main/docs/
+repo_name: rajeshpv/notebook-gena
+copyright: Maintained by <a href="https://rajeshpv.com">rajeshpv</a>.
+
+nav:
+  - Home: index.md
+  - Modules: modules.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["src/notebook_gena"]
+theme:
+  name: material
+  feature:
+    tabs: true
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rajeshpv/notebook-gena
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/notebook-gena
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
