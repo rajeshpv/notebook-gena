@@ -6,3 +6,4 @@
 [![License](https://img.shields.io/github/license/rajeshpv/notebook-gena)](https://img.shields.io/github/license/rajeshpv/notebook-gena)
 
 This is a template repository for Python projects that use uv for their dependency management.
+v 1.0.0
