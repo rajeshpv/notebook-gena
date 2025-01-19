@@ -1,5 +1,3 @@
-import warnings
-
 import pytest
 from my_resource import MyResource
 from sqlalchemy import Connection, create_engine
@@ -20,23 +18,19 @@ def postgres_container() -> PostgresContainer:
     """
     Setup postgres container; note port is not specified, so it will be random,
     """
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", message="S106")
-        warnings.filterwarnings("ignore", message="S105")
-        CONST_PWD = "test_pwd"
-        postgres = PostgresContainer(
-            image="postgres:14",
-            username="postgres",
-            password=CONST_PWD,
-            dbname="test_database",
+    postgres = PostgresContainer(
+        image="postgres:14",
+        username="postgres",
+        password="test_pwd",
+        dbname="test_database",
+    )
+    with postgres:
+        wait_for_logs(
+            postgres,
+            r"UTC \[1\] LOG:  database system is ready to accept connections",
+            10,
         )
-        with postgres:
-            wait_for_logs(
-                postgres,
-                r"UTC \[1\] LOG:  database system is ready to accept connections",
-                10,
-            )
-            yield postgres
+        yield postgres
 
 
 @pytest.fixture(scope="session")
