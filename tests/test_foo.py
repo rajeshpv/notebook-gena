@@ -7,7 +7,7 @@ from notebook_gena.foo import foo
 
 
 def test_foo():
-    peek("foo 1")
+    peek("foo 2")
     assert foo("foo") == "foo"
 
 

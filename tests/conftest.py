@@ -21,7 +21,7 @@ def postgres_container() -> PostgresContainer:
     postgres = PostgresContainer(
         image="postgres:14",
         username="postgres",
-        password="test_pwd",
+        password="test_password",
         dbname="test_database",
     )
     with postgres:

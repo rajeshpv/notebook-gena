@@ -1,3 +1,5 @@
+TEST_FILENAME=tests/unknown.py
+
 .PHONY: install
 install: ## Install the virtual environment and install the pre-commit hooks
 	@echo "🚀 Creating virtual environment using uv"
@@ -19,6 +21,11 @@ check: ## Run code quality tools.
 test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"
 	@uv run python -m pytest --capture=no --disable-warnings
+
+.PHONY: test-watch
+test-watch: ## Test the code with pytest with watcher
+	@echo "🚀 Testing code: Running pytest"
+	@find src tests -name "*.py" | entr -r uv run python -m pytest --capture=no --disable-warnings $(TEST_FILENAME)
 
 .PHONY: test-cov
 test-cov: ## Test the code with pytest

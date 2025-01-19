@@ -6,4 +6,20 @@
 [![License](https://img.shields.io/github/license/rajeshpv/notebook-gena)](https://img.shields.io/github/license/rajeshpv/notebook-gena)
 
 This is a template repository for Python projects that use uv for their dependency management.
-v 1.0.0
+
+## VSCode settings
+
+```bash
+mkdir -p .vscode
+echo '{"explorer.excludeGitIgnore": true}' > .vscode/settings.json
+```
+
+## Features
+
+### Makefiles changes
+
+#### Run particular test-file under watch mode
+
+```bash
+make test-watch TEST_FILENAME=tests/test_foo.py
+```
