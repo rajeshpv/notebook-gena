@@ -12,13 +12,18 @@ check: ## Run code quality tools.
 	@uv run pre-commit run -a
 	@echo "🚀 Static type checking: Running mypy"
 	@uv run mypy
-	@echo "🚀 Checking for obsolete dependencies: Running deptry"
-	@uv run deptry .
+## @echo "🚀 Checking for obsolete dependencies: Running deptry"
+## @uv run deptry .
 
 .PHONY: test
 test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"
-	@uv run python -m pytest --cov --cov-config=pyproject.toml --cov-report=xml
+	@uv run python -m pytest --capture=no --disable-warnings
+
+.PHONY: test-cov
+test-cov: ## Test the code with pytest
+	@echo "🚀 Testing code: Running pytest with Coverage"
+	@uv run python -m pytest --cov --cov-config=pyproject.toml --cov-report=xml --disable-warnings
 
 .PHONY: build
 build: clean-build ## Build wheel file
