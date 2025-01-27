@@ -39,7 +39,10 @@ def mongo_container() -> MongoDbContainer:
     Setup mongo container; note port is not specified, so it will be random,
     """
     mongo = MongoDbContainer(
-        image="mongo:6.0.7",
+        image="mongo:6.0.20",
+        username="test_user",
+        password="test_password",
+        dbname="test_db",
     )
     with mongo:
         wait_for_logs(

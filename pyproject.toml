@@ -99,7 +99,7 @@ select = [
     # ruff
     "RUF",
     # tryceratops
-    "TRY",
+    "TRY"
 ]
 ignore = [
     # LineTooLong
@@ -108,6 +108,7 @@ ignore = [
     "E731",
     "S105",
     "S106",
+    "TRY003",
 ]
 
 [tool.ruff.lint.per-file-ignores]

@@ -21,5 +21,8 @@ echo '{"explorer.excludeGitIgnore": true}' > .vscode/settings.json
 #### Run particular test-file under watch mode
 
 ```bash
-make test-watch TEST_FILENAME=tests/test_foo.py
+cd $HOME/projects/github/notebook-gena
+
+make test-watch FILENAME=tests/test_foo.py
+make test-watch FILENAME=tests/test_mongodb.py
 ```

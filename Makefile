@@ -25,7 +25,7 @@ test: ## Test the code with pytest
 .PHONY: test-watch
 test-watch: ## Test the code with pytest with watcher
 	@echo "🚀 Testing code: Running pytest"
-	@find src tests -name "*.py" | entr -r uv run python -m pytest --capture=no --disable-warnings $(TEST_FILENAME)
+	@find src tests -name "*.py" | entr -r uv run python -m pytest --capture=no --disable-warnings $(FILENAME)
 
 .PHONY: test-cov
 test-cov: ## Test the code with pytest
