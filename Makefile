@@ -17,6 +17,11 @@ check: ## Run code quality tools.
 ## @echo "🚀 Checking for obsolete dependencies: Running deptry"
 ## @uv run deptry .
 
+.PHONY: check-watch
+check-watch: ## Run code quality tools.
+	@echo "🚀 Static type checking: Running mypy"
+	@find src tests -name "*.py" | entr -r uv run mypy
+
 .PHONY: test
 test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"

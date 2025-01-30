@@ -25,4 +25,5 @@ cd $HOME/projects/github/notebook-gena
 
 make test-watch FILENAME=tests/test_foo.py
 make test-watch FILENAME=tests/test_mongodb.py
+make test-watch FILENAME=tests/test_postgresdb.py
 ```

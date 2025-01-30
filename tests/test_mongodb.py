@@ -4,6 +4,7 @@ from pymongo.collection import Collection
 from pymongo.database import Database
 
 from notebook_gena.mongodb import MongoDB, MongoDBException
+from notebook_gena.mongoquery import MongoQuery
 
 
 def test_mongodb_connect_with_url(mongo_container):
@@ -82,3 +83,9 @@ def test_list_collection_names(mongo_container):
 
     assert {"test_collection"}.issubset(set(mongodb.list_collection_names()))
     assert {"test_collection_2"}.issubset(set(mongodb_2.list_collection_names()))
+
+
+def test_mongoquery(mongo_container):
+    mongodb = MongoDB.connect_with_db_name(mongo_container.get_connection_url(), "test_db")
+    mongoquery = mongodb.mongoQuery()
+    assert isinstance(mongoquery, MongoQuery)

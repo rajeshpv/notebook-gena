@@ -1,29 +1,19 @@
 import os
 
 from pymongo import MongoClient
-from pymongo.collection import Collection
 from pymongo.database import Database
+
+from notebook_gena.basemongo import BaseMongo
+from notebook_gena.mongoquery import MongoQuery
 
 
 class MongoDBException(Exception):
     pass
 
 
-class MongoDB:
+class MongoDB(BaseMongo):
     def __init__(self, _mongoClient: MongoClient, _currentDb: Database):
-        self._mongoClient = _mongoClient
-        self._currentDb = _currentDb
-
-    @property
-    def db_name(self) -> str:
-        return self._currentDb.name
-
-    @property
-    def db(self) -> Database:
-        return self._currentDb
-
-    def collection(self, collection_name: str) -> Collection:
-        return self._currentDb.get_collection(collection_name)
+        super().__init__(_mongoClient, _currentDb)
 
     @staticmethod
     def connect(env_name_or_url: str) -> "MongoDB":
@@ -46,6 +36,9 @@ class MongoDB:
         )
         client: MongoClient = MongoClient(mongo_con_url, authSource="admin")
         return MongoDB(client, client.get_database(db_name))
+
+    def mongoQuery(self) -> MongoQuery:
+        return MongoQuery(self._mongoClient, self._currentDb)
 
     def change_db(self, db_name: str) -> "MongoDB":
         new_client: MongoClient = self._mongoClient
